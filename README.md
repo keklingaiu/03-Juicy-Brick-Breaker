@@ -1,4 +1,4 @@
-# Project Name
+# Mega Brick Breaker
 Game developed for MSCH-C220, 10 October 2020
 
 This is a 2D brick breaker game that has been "juicified" by adding many crazy features. Progress through the game by destroying all of the bricks and earning score, or losing all of your lives.
