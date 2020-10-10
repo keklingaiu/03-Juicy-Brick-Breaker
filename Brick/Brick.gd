@@ -20,10 +20,10 @@ var colors = [
 	,Color8(255,243,191)
 ]
 onready var textures = [
-	load("res://Assets/smoke0.png")
-	,load("res://Assets/smoke1.png")
-	,load("res://Assets/smoke2.png")
-	,load("res://Assets/smoke3.png")
+	load("res://Assets/flash00.png")
+	,load("res://Assets/flash01.png")
+	,load("res://Assets/flash02.png")
+	,load("res://Assets/flash03.png")
 ]
 
 func _ready():

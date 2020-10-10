@@ -1,16 +1,16 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Camera/WorldEnvironment.gd" type="Script" id=1]
 [ext_resource path="res://Ball/Trail_Container.gd" type="Script" id=2]
 [ext_resource path="res://Assets/paddle.wav" type="AudioStream" id=3]
 [ext_resource path="res://Assets/mouth.png" type="Texture" id=4]
 [ext_resource path="res://Assets/brick.wav" type="AudioStream" id=5]
-[ext_resource path="res://Assets/confetti.png" type="Texture" id=6]
+[ext_resource path="res://Assets/paddle_particle.png" type="Texture" id=6]
 [ext_resource path="res://Assets/eye.png" type="Texture" id=7]
 [ext_resource path="res://Assets/wall.wav" type="AudioStream" id=8]
 [ext_resource path="res://Assets/pupil.png" type="Texture" id=9]
 [ext_resource path="res://Assets/music.ogg" type="AudioStream" id=10]
-[ext_resource path="res://Assets/Datalegreya-Thin.otf" type="DynamicFontData" id=11]
+[ext_resource path="res://Assets/Kenney Future.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://Ball/Ball_Container.gd" type="Script" id=12]
 [ext_resource path="res://Background/Background.gd" type="Script" id=13]
 [ext_resource path="res://Brick/Bricks2.gd" type="Script" id=14]
@@ -20,7 +20,7 @@
 [ext_resource path="res://Camera/Camera.gd" type="Script" id=18]
 [ext_resource path="res://HUD/HUD.gd" type="Script" id=19]
 [ext_resource path="res://Walls/Walls.gd" type="Script" id=20]
-[ext_resource path="res://Assets/bubble.png" type="Texture" id=21]
+[ext_resource path="res://Assets/fireball.png" type="Texture" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 50, 10 )
@@ -59,15 +59,15 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 angle_random = 0.5
 angle_curve = SubResource( 3 )
-scale = 0.5
-scale_random = 0.5
+scale = 0.01
+scale_random = 0.01
 scale_curve = SubResource( 7 )
 color_ramp = SubResource( 5 )
 hue_variation = 0.7
 hue_variation_random = 0.25
 
 [sub_resource type="DynamicFont" id=9]
-size = 36
+size = 25
 font_data = ExtResource( 11 )
 
 [sub_resource type="Environment" id=10]
@@ -93,6 +93,14 @@ linear_accel = 300.0
 linear_accel_random = 1.0
 radial_accel = 100.0
 radial_accel_random = 1.0
+
+[sub_resource type="DynamicFont" id=12]
+size = 18
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 18
+font_data = ExtResource( 11 )
 
 [node name="Game" type="Node2D"]
 __meta__ = {
@@ -175,6 +183,7 @@ texture = ExtResource( 4 )
 
 [node name="Particles2D" type="Particles2D" parent="Paddle_Container"]
 position = Vector2( 507, 700 )
+scale = Vector2( 0.2, 0.2 )
 emitting = false
 amount = 6
 lifetime = 0.4
@@ -233,6 +242,7 @@ script = ExtResource( 20 )
 polygon = PoolVector2Array( 0, 0, 1024, 0, 1024, 768, 1088, 768, 1088, -64, -64, -64, -64, 768, 0, 768 )
 
 [node name="Particles2D" type="Particles2D" parent="Walls"]
+scale = Vector2( 0.5, 0.5 )
 emitting = false
 lifetime = 0.4
 one_shot = true
@@ -252,15 +262,20 @@ margin_left = 8.48526
 margin_top = 10.6066
 margin_right = 387.485
 margin_bottom = 77.6066
+custom_fonts/font = SubResource( 12 )
 text = "Score: "
 valign = 1
 uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Lives" type="Label" parent="HUD"]
 margin_left = 626.0
 margin_top = 6.0
 margin_right = 1017.0
 margin_bottom = 80.0
+custom_fonts/font = SubResource( 13 )
 text = "Lives: "
 align = 2
 valign = 1

@@ -1,12 +1,12 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Paddle/Paddle.gd" type="Script" id=1]
 [ext_resource path="res://Ball/Ball_Container.gd" type="Script" id=2]
 [ext_resource path="res://Brick/Bricks.gd" type="Script" id=3]
 [ext_resource path="res://HUD/HUD.gd" type="Script" id=4]
-[ext_resource path="res://Assets/bubble.png" type="Texture" id=5]
+[ext_resource path="res://Assets/fireball.png" type="Texture" id=5]
 [ext_resource path="res://Background/Background.gd" type="Script" id=6]
-[ext_resource path="res://Assets/confetti.png" type="Texture" id=7]
+[ext_resource path="res://Assets/paddle_particle.png" type="Texture" id=7]
 [ext_resource path="res://Walls/Walls.gd" type="Script" id=8]
 [ext_resource path="res://Camera/Camera.gd" type="Script" id=9]
 [ext_resource path="res://Ball/Trail_Container.gd" type="Script" id=10]
@@ -15,7 +15,7 @@
 [ext_resource path="res://Assets/eye.png" type="Texture" id=13]
 [ext_resource path="res://Assets/pupil.png" type="Texture" id=14]
 [ext_resource path="res://Assets/mouth.png" type="Texture" id=15]
-[ext_resource path="res://Assets/Datalegreya-Thin.otf" type="DynamicFontData" id=16]
+[ext_resource path="res://Assets/Kenney Future.ttf" type="DynamicFontData" id=16]
 [ext_resource path="res://Audio/Music.gd" type="Script" id=17]
 [ext_resource path="res://Assets/music.ogg" type="AudioStream" id=18]
 [ext_resource path="res://Assets/paddle.wav" type="AudioStream" id=19]
@@ -53,7 +53,7 @@ spread = 60.0
 gravity = Vector3( 0, 98, 0 )
 initial_velocity = 450.0
 initial_velocity_random = 0.75
-angular_velocity = 100.0
+angular_velocity = 150.0
 angular_velocity_random = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
@@ -67,7 +67,7 @@ hue_variation = 0.7
 hue_variation_random = 0.25
 
 [sub_resource type="DynamicFont" id=9]
-size = 36
+size = 25
 font_data = ExtResource( 16 )
 
 [sub_resource type="Environment" id=10]
@@ -93,6 +93,14 @@ linear_accel = 300.0
 linear_accel_random = 1.0
 radial_accel = 100.0
 radial_accel_random = 1.0
+
+[sub_resource type="DynamicFont" id=12]
+size = 18
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 18
+font_data = ExtResource( 16 )
 
 [node name="Game" type="Node2D"]
 __meta__ = {
@@ -174,6 +182,7 @@ texture = ExtResource( 15 )
 
 [node name="Particles2D" type="Particles2D" parent="Paddle_Container"]
 position = Vector2( 507, 700 )
+scale = Vector2( 0.2, 0.2 )
 emitting = false
 amount = 6
 lifetime = 0.4
@@ -197,8 +206,9 @@ script = ExtResource( 9 )
 [node name="Timer" type="Timer" parent="Starting"]
 
 [node name="Countdown" type="Label" parent="Starting"]
+margin_top = -0.707108
 margin_right = 1024.0
-margin_bottom = 100.0
+margin_bottom = 99.2929
 custom_fonts/font = SubResource( 9 )
 text = "Starting in: "
 align = 1
@@ -232,6 +242,7 @@ script = ExtResource( 8 )
 polygon = PoolVector2Array( 0, 0, 1024, 0, 1024, 768, 1088, 768, 1088, -64, -64, -64, -64, 768, 0, 768 )
 
 [node name="Particles2D" type="Particles2D" parent="Walls"]
+scale = Vector2( 0.5, 0.5 )
 emitting = false
 lifetime = 0.4
 one_shot = true
@@ -251,6 +262,7 @@ margin_left = 8.48526
 margin_top = 10.6066
 margin_right = 387.485
 margin_bottom = 77.6066
+custom_fonts/font = SubResource( 12 )
 text = "Score: "
 valign = 1
 uppercase = true
@@ -260,10 +272,14 @@ margin_left = 626.0
 margin_top = 6.0
 margin_right = 1017.0
 margin_bottom = 80.0
+custom_fonts/font = SubResource( 13 )
 text = "Lives: "
 align = 2
 valign = 1
 uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="timeout" from="Background/Timer" to="Background" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Starting/Timer" to="Ball_Container" method="_on_Timer_timeout"]
 [connection signal="finished" from="Music" to="Music" method="_on_Music_finished"]
