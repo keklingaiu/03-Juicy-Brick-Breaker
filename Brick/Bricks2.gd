@@ -1,20 +1,20 @@
 extends Node2D
 
 onready var VP = get_viewport_rect().size
-onready var Brick = load("res://Brick/Brick.tscn")
+onready var Brick = load("res://Brick/Brick2.tscn")
 
 export var W = 8
-export var H = 7
+export var H = 9
 export var top_margin = 100
 export var margin = 3
 
 var B = Vector2(90,30)
 
 func _physics_process(delta):
-	if get_child_count() == 0 && Global.level != 1:
-		get_tree().change_scene("res://Levels/Level2.tscn")
-		start_bricks()
+	if get_child_count() == 0:
 		Global.update_level(1)
+		if Global.level == 2:
+			get_tree().change_scene("res://HUD/GameOver.tscn")
 	
 
 func _ready():

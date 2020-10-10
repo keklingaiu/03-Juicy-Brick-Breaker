@@ -1,16 +1,30 @@
 extends Node
 
-onready var HUD = get_node("/root/Game/HUD")
-onready var Camera1 = get_node("/root/Game/Camera")
-onready var Camera2 = get_node("/root/Game/HUD/Camera")
 
-func _process(delta):
-	if Input.is_action_just_pressed("menu"):	
-		if HUD.visible:
-			HUD.hide()
-			Camera2.current = false
-			Camera1.current = true
-		else:
-			HUD.show()
-			Camera1.current = false
-			Camera2.current = true
+var lives = 5
+var score = 0
+var level = 0
+
+signal changed
+
+func _ready():
+	emit_signal("changed")
+	
+func reset():
+	lives = 5
+	score = 0
+	level = 0
+
+func update_score(s):
+	score += s
+	emit_signal("changed")
+	
+func update_lives(l):
+	lives += l
+	emit_signal("changed")
+	if lives <= 0:
+		get_tree().change_scene("res://HUD/GameOver.tscn")
+	
+func update_level(l):
+	level += l
+	emit_signal("changed")

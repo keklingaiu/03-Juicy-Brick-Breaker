@@ -5,6 +5,7 @@ onready var target_y = position.y
 var row = 0
 var col = 0
 
+
 export var appear_speed = 3
 export var fall_speed = 1.0
 
@@ -16,6 +17,8 @@ var colors = [
 	,Color8(253,126,20)	
 	,Color8(255,169,77)	
 	,Color8(252,196,25)	
+	,Color8(255,224,102)
+	,Color8(255,243,191)
 	,Color8(255,224,102)
 	,Color8(255,243,191)
 ]

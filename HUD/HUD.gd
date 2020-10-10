@@ -1,15 +1,16 @@
 extends Control
 
+func _ready():
+	Global.connect("changed", self, "_on_Global_changed")
+	update_lives()
+	update_score()
+	
+func update_score():
+	$Score.text = "Score: " + str(Global.score)
 
+func update_lives():
+	$Lives.text = "Lives: " + str(Global.lives)
 
-func _on_Reset_pressed():
-	get_node("/root/Game/Bricks").start_bricks()
-	get_node("/root/Game/Ball_Container").start_ball()
-	get_node("/root/Game/Paddle_Container/Paddle").start_paddle()
-
-
-func _on_Quit_pressed():
-	get_tree().quit()
-
-
-
+func _on_Global_changed():
+	update_score()
+	update_lives()

@@ -2,18 +2,20 @@ extends KinematicBody2D
 
 onready var Ball = load("res://Ball/Ball.tscn")
 
-
 export var speed = 30
-export var distort = Vector2(1,1)
+export var distort = Vector2(1.5,1.1)
+export var fall_duration = 3
 
 onready var collision_transform = $CollisionShape2D.get_transform().get_scale()	
 
 
 onready var target_y = position.y
 
-var color = Color8(230,73,128) #Pink 6
+var color = Color8(255,0,50) #Pink 6
+var color_s = color.s
 
 func _ready():
+	randomize()
 	update_color()
 	start_paddle()
 
@@ -27,10 +29,12 @@ func _physics_process(_delta):
 	var s = sign(target - position.x)					# which direction to move
 	
 	position.x += s*t
-
 	var w = 1 + (distort.x * p)
 	var h = 1 - (1/distort.y * p)
 	change_size(w,h)
+	color.s = color_s * (1-p)
+	update_color()
+	$Face.position.x = ($Color.rect_size.x * distort.x * p)/2
 
 
 
@@ -41,18 +45,13 @@ func change_size(w, h):
 
 func start_paddle():
 	var target_pos = position
-	var appear_duration = 2.0
 	position.y = -100
-	$Tween.interpolate_property(self, "position", position, target_pos, appear_duration, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property(self, "position", position, target_pos, fall_duration, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
 	$Tween.start()
-	
-
-
 
 
 func update_color():
 	$Color.color = color
-	
 
 func emit_particle(pos):
 	get_parent().find_node("Particles2D").global_position = pos

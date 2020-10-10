@@ -6,12 +6,20 @@ onready var timer = get_node("/root/Game/Starting/Timer")
 var countdown = 5
 var c = 0
 
+var starting = false;
+
 func _ready():
+	starting = true
 	start_ball()
+	
+	
+func _physics_process(delta):
+	if not starting && get_child_count() == 0:
+		create_ball()
 
 func start_ball():
-	for c in get_children():
-		c.queue_free()
+	for ch in get_children():
+		ch.queue_free()
 	c = countdown
 	Cdown.show()
 	Cdown.text = "Starting in: " + str(c)
@@ -34,3 +42,4 @@ func _on_Timer_timeout():
 		Cdown.hide()
 		create_ball()
 		timer.stop()
+		starting = false
