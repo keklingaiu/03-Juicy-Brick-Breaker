@@ -2,10 +2,11 @@ extends ColorRect
 
 var c = 0
 var colors = [
-	Color8(95,61,196)			#black
-	,Color8(112,72,232)		#gray 9
-	,Color8(132,94,247)		#gray 8
-	,Color8(177,151,252)		#gray 9
+	Color8(33,37,41)	
+	,Color8(52,58,64)
+	,Color8(73,80,87)	
+	,Color8(134,142,150)	
+	
 ]
 
 

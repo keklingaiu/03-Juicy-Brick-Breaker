@@ -11,7 +11,7 @@ onready var collision_transform = $CollisionShape2D.get_transform().get_scale()
 
 onready var target_y = position.y
 
-var color = Color8(255,0,50) #Pink 6
+var color = Color8(11,114,133) 
 var color_s = color.s
 
 func _ready():

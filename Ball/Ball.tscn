@@ -15,7 +15,7 @@ gradient = SubResource( 2 )
 
 [sub_resource type="Curve" id=4]
 min_value = -0.54
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.517949, -0.54 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.496124, -0.54 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=5]
 curve = SubResource( 4 )

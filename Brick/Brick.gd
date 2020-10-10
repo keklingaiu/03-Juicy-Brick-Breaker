@@ -11,13 +11,13 @@ export var fall_speed = 1.0
 var dying = false
 
 var colors = [
-	Color8(201,42,42)	
-	,Color8(250,82,82)	
-	,Color8(253,126,20)	
-	,Color8(255,169,77)	
-	,Color8(252,196,25)	
-	,Color8(255,224,102)
-	,Color8(255,243,191)
+	Color8(43,138,62)	
+	,Color8(55,178,77)	
+	,Color8(18,184,134)	
+	,Color8(56,217,169)	
+	,Color8(59,201,219)	
+	,Color8(102,217,232)
+	,Color8(153,233,242)
 ]
 onready var textures = [
 	load("res://Assets/flash00.png")

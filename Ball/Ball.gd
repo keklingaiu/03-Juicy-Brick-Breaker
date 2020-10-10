@@ -22,7 +22,7 @@ func _ready():
 
 
 func update_color():
-	$Color.color = Color8(34,184,207)
+	$Color.color = Color8(81,207,102)
 	$Particles2D.emitting = true
 
 func screen_shake(amount):

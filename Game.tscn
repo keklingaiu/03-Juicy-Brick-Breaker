@@ -224,6 +224,7 @@ script = ExtResource( 11 )
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
 volume_db = -26.765
+autoplay = true
 script = ExtResource( 17 )
 
 [node name="Effect_Paddle" type="AudioStreamPlayer" parent="."]
